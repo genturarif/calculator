@@ -13,7 +13,7 @@ let result = null;
 let lastOperation = "";
 let haveDot = false;
 
-// Numbers and Dot(.) display 2
+// Numbers and Dot(.) Display 2 Function
 numbersEl.forEach((number) => {
   number.addEventListener("click", (e) => {
     if (e.target.innerText === "." && !haveDot) {
@@ -25,3 +25,50 @@ numbersEl.forEach((number) => {
     display2El.innerText = dis2Num;
   });
 });
+
+// Operation Condition Function
+operationEl.forEach((operation) => {
+  operation.addEventListener("click", (e) => {
+    if (!dis2Num) {
+      return;
+    }
+
+    haveDot = false;
+    const operationName = e.target.innerText;
+
+    if (dis1Num && dis2Num && lastOperation) {
+      mathOperation();
+    } else {
+      result = parseFloat(dis2Num);
+    }
+
+    clearVar(operationName);
+    lastOperation = operationName;
+  });
+});
+
+// Display 1 and Result Display Function
+function clearVar(name = "") {
+  dis1Num += dis2Num + " " + name + " ";
+  display1El.innerText = dis1Num;
+
+  dis2Num = "";
+  display2El.innerText = "";
+
+  tempResultEl.innerText = result;
+}
+
+// Operation Function
+function mathOperation() {
+  if (lastOperation === "x") {
+    result = parseFloat(result) * parseFloat(dis2Num);
+  } else if (lastOperation === "/") {
+    result = parseFloat(result) / parseFloat(dis2Num);
+  } else if (lastOperation === "+") {
+    result = parseFloat(result) + parseFloat(dis2Num);
+  } else if (lastOperation === "-") {
+    result = parseFloat(result) - parseFloat(dis2Num);
+  } else if (lastOperation === "%") {
+    result = parseFloat(result) % parseFloat(dis2Num);
+  }
+}
