@@ -47,17 +47,6 @@ operationEl.forEach((operation) => {
   });
 });
 
-// Display 1 and Result Display Function
-function clearVar(name = "") {
-  dis1Num += dis2Num + " " + name + " ";
-  display1El.innerText = dis1Num;
-
-  dis2Num = "";
-  display2El.innerText = "";
-
-  tempResultEl.innerText = result;
-}
-
 // Operation Function
 function mathOperation() {
   if (lastOperation === "x") {
@@ -72,3 +61,31 @@ function mathOperation() {
     result = parseFloat(result) % parseFloat(dis2Num);
   }
 }
+
+// Display 1 and Result Display Function
+function clearVar(name = "") {
+  dis1Num += dis2Num + " " + name + " ";
+  display1El.innerText = dis1Num;
+
+  dis2Num = "";
+  display2El.innerText = "";
+
+  tempResultEl.innerText = result;
+}
+
+// Equal Function
+equalEl.addEventListener("click", (e) => {
+  if (!dis2Num || !dis1Num) {
+    return;
+  }
+
+  haveDot = false;
+  mathOperation();
+  clearVar();
+
+  display2El.innerText = result;
+  tempResultEl.innerText = "";
+
+  dis2Num = result;
+  dis1Num = "";
+});
