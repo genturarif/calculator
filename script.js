@@ -101,3 +101,9 @@ clearAllEl.addEventListener("click", (e) => {
   tempResultEl.innerText = "0";
   result = "";
 });
+
+// Clear Last Function
+clearLastEl.addEventListener("click", (e) => {
+  display2El.innerText = "";
+  dis2Num = "";
+});
