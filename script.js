@@ -62,7 +62,7 @@ function mathOperation() {
   }
 }
 
-// Display 1 and Result Display Function
+// Display 1 and Display Temporary Result Function
 function clearVar(name = "") {
   dis1Num += dis2Num + " " + name + " ";
   display1El.innerText = dis1Num;
@@ -88,4 +88,16 @@ equalEl.addEventListener("click", (e) => {
 
   dis2Num = result;
   dis1Num = "";
+});
+
+// Clear All Function
+clearAllEl.addEventListener("click", (e) => {
+  display1El.innerText = "0";
+  display2El.innerText = "0";
+
+  dis1Num = "";
+  dis2Num = "";
+
+  tempResultEl.innerText = "0";
+  result = "";
 });
