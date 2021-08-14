@@ -114,6 +114,10 @@ window.addEventListener("keydown", (e) => {
     clickButtonEl(e.key);
   } else if (e.key === "x" || e.key === "/" || e.key === "+" || e.key === "-" || e.key === "%") {
     clickOperation(e.key);
+  } else if (e.key == "Enter" || e.key === "=") {
+    clickEqual();
+  } else if (e.key === "c") {
+    clickClearAll();
   }
 });
 
@@ -131,4 +135,12 @@ function clickOperation(key) {
       button.click();
     }
   });
+}
+
+function clickEqual() {
+  equalEl.click();
+}
+
+function clickClearAll() {
+  clearAllEl.click();
 }
